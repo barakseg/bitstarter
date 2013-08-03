@@ -4,7 +4,8 @@ var express = require('express');
 var app = express();
 app.use(express.logger());
 
-var msg = fs.readFileSync(inFile);
+var buffer = new Buffer(fs.readFileSync(inFile));
+var msg = buffer.toString();
 
 app.get('/', function(request, response) {
   response.send(msg);
